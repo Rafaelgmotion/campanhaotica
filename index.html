@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ótica Visão Clara · relatório de campanha</title>
+    <!-- Chart.js 4.4 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <!-- Fonte Inter (moderna e limpa) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        /* === ESTILOS PROFISSIONAIS === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1e293b;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 2rem;
+        }
+
+        /* Tipografia */
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #0a2a3e;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 1.75rem;
+            padding-left: 1rem;
+            border-left: 6px solid #0f3b5c;
+            color: #0f2c3f;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1e3a5f;
+        }
+
+        .subtitulo-hero {
+            font-size: 1.2rem;
+            color: #4b5a6b;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+        }
+
+        /* Cards com sombra suave */
+        .card {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.04), 0 4px 8px rgba(0,20,40,0.03);
+            padding: 1.5rem 1.8rem;
+            transition: all 0.2s ease;
+            height: 100%;
+            border: 1px solid #f0f4f9;
+        }
+
+        .card:hover {
+            box-shadow: 0 20px 35px -5px rgba(10, 50, 80, 0.12);
+            transform: translateY(-3px);
+        }
+
+        /* grids responsivos */
+        .grid-4 {
+            display: grid;
+            grid-template-columnns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.8rem;
+        }
+
+        /* animações suaves ao rolar (via intersection observer + classe) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.1, 1), transform 0.7s cubic-bezier(0.2, 0.9, 0.1, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* KPI cards */
+        .kpi-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #0f3b5c;
+            line-height: 1.2;
+        }
+
+        .kpi-label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #62748a;
+            margin-bottom: 0.2rem;
+        }
+
+        .badge-status {
+            background-color: #e1ecf5;
+            color: #0f3b5c;
+            font-weight: 600;
+            padding: 0.5rem 1.4rem;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            display: inline-block;
+            border: 1px solid #c8daea;
+        }
+
+        /* funil custom */
+        .funil-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.5rem;
+        }
+
+        .funil-etapa {
+            text-align: center;
+            min-width: 140px;
+        }
+
+        .funil-valor {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #0f3b5c;
+        }
+
+        .funil-legenda {
+            color: #536e82;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .seta-funil {
+            font-size: 2rem;
+            color: #b2c9da;
+            font-weight: 300;
+        }
+
+        /* tags anúncio */
+        .tag-anuncio {
+            display: inline-block;
+            background: #edf3f9;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #1f3a57;
+            margin-bottom: 1rem;
+            letter-spacing: 0.01em;
+        }
+
+        .vencedor-tag {
+            background: #0f3b5c;
+            color: white;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 0.8rem;
+        }
+
+        .status-vencedor {
+            background: #dff0e0;
+            color: #1f6c2f;
+        }
+
+        .status-teste {
+            background: #fff2cf;
+            color: #8e6100;
+        }
+
+        .status-pausado {
+            background: #ffe6e5;
+            color: #b13e3e;
+        }
+
+        /* lista de melhorias */
+        .lista-marcadores {
+            list-style: none;
+        }
+
+        .lista-marcadores li {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+            color: #23456b;
+        }
+
+        .check-circle {
+            background: #0f3b5c;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .check-circle::before {
+            content: "✓";
+        }
+
+        /* meta range */
+        .meta-faixa {
+            background: #e4f0fa;
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0a2a3e;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        /* gráficos menores */
+        .chart-wrapper {
+            height: 170px;
+            margin-top: 1.2rem;
+            width: 100%;
+        }
+
+        /* plano de escala */
+        .plano-item {
+            display: flex;
+            gap: 0.8rem;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .plano-numero {
+            background: #d4e3f0;
+            color: #0f3b5c;
+            width: 26px;
+            height: 26px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #ecf3fa;
+            margin: 2.5rem 0 1.5rem;
+        }
+
+        .footer-message {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #0f2c3f;
+            max-width: 700px;
+            margin: 0 auto;
+            background: #f6fafd;
+            padding: 2rem;
+            border-radius: 3rem;
+        }
+
+        /* responsivo */
+        @media (max-width: 700px) {
+            h1 { font-size: 2.2rem; }
+            .container { padding: 1.2rem; }
+            .grid-4 { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- SEÇÃO 1 – HERO (cards principais) -->
+        <section class="reveal">
+            <h1>Relatório de performance<br>Campanha Ótica I-deal Optics</h1>
+            <div class="subtitulo-hero">Estratégia de tráfego pago para geração de conversas no WhatsApp</div>
+
+            <div class="grid-4">
+                <div class="card">
+                    <div class="kpi-label">Conversas geradas</div>
+                    <div class="kpi-number"><span class="contador" data-alvo="36">0</span></div>
+                </div>
+                <div class="card">
+                    <div class="kpi-label">Melhor custo por conversa</div>
+                    <div class="kpi-number">R$ <span class="contador" data-alvo="201" data-divide="100">0</span></div>
+                </div>
+                <div class="card">
+                    <div class="kpi-label">Orçamento diário atual</div>
+                    <div class="kpi-number">R$ <span class="contador" data-alvo="35">0</span></div>
+                </div>
+                <div class="card" style="display: flex; align-items: center;">
+                    <span class="badge-status">📊 Campanha em otimização</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 2 – FUNIL (explicação visual) -->
+        <section style="margin-top: 4rem;" class="reveal">
+            <h2>Funil da campanha</h2>
+            <div class="card">
+                <p style="margin-bottom: 2rem; color: #3c556b;">Nosso objetivo é transformar visualizações em conversas reais no WhatsApp. Veja o fluxo:</p>
+                <div class="funil-row">
+                    <div class="funil-etapa">
+                        <div class="funil-valor"><span class="contador" data-alvo="1850">0</span></div>
+                        <span class="funil-legenda">pessoas alcançadas</span>
+                    </div>
+                    <span class="seta-funil">→</span>
+                    <div class="funil-etapa">
+                        <div class="funil-valor"><span class="contador" data-alvo="124">0</span></div>
+                        <span class="funil-legenda">cliques no anúncio</span>
+                    </div>
+                    <span class="seta-funil">→</span>
+                    <div class="funil-etapa">
+                        <div class="funil-valor"><span class="contador" data-alvo="36">0</span></div>
+                        <span class="funil-legenda">conversas no WhatsApp</span>
+                    </div>
+                </div>
+                <p style="margin-top: 1.8rem; color: #2b4b6e; background: #e5f0f8; padding: 0.8rem; border-radius: 60px; text-align: center;">A campanha é otimizada para gerar conversas diretas no WhatsApp, não apenas cliques.</p>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 3 – TESTE DE ANÚNCIOS + GRÁFICO -->
+        <section style="margin-top: 4rem;" class="reveal">
+            <h2>Criativos testados na campanha</h2>
+            <div class="grid-3">
+                <!-- anúncio 1 – vencedor -->
+                <div class="card">
+                    <span class="tag-anuncio vencedor-tag">CARROSSEL OFERTA R$339</span>
+                    <div style="margin: 1rem 0;">
+                        <div class="kpi-label">conversas</div>
+                        <div class="kpi-number"><span class="contador" data-alvo="33">0</span></div>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <div class="kpi-label">custo por conversa</div>
+                        <div class="kpi-number">R$ <span class="contador" data-alvo="201" data-divide="100">0</span></div>
+                    </div>
+                    <span class="status-badge status-vencedor">ANÚNCIO VENCEDOR</span>
+                </div>
+                <!-- anúncio 2 – vista cansada -->
+                <div class="card">
+                    <span class="tag-anuncio">VISTA CANSADA (educativo)</span>
+                    <div style="margin: 1rem 0;">
+                        <div class="kpi-label">conversas</div>
+                        <div class="kpi-number"><span class="contador" data-alvo="1">0</span></div>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <div class="kpi-label">custo por conversa</div>
+                        <div class="kpi-number">R$ <span class="contador" data-alvo="294" data-divide="100">0</span></div>
+                    </div>
+                    <span class="status-badge status-teste">TESTE EM ANDAMENTO</span>
+                </div>
+                <!-- anúncio 3 – vídeo institucional -->
+                <div class="card">
+                    <span class="tag-anuncio">VÍDEO INSTITUCIONAL</span>
+                    <div style="margin: 1rem 0;">
+                        <div class="kpi-label">conversas</div>
+                        <div class="kpi-number"><span class="contador" data-alvo="2">0</span></div>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <div class="kpi-label">custo por conversa</div>
+                        <div class="kpi-number">R$ <span class="contador" data-alvo="606" data-divide="100">0</span></div>
+                    </div>
+                    <span class="status-badge status-pausado">PAUSADO (CUSTO ALTO)</span>
+                </div>
+            </div>
+
+            <!-- gráfico de barras comparativo -->
+            <div class="card" style="margin-top: 1.8rem;">
+                <h3 style="margin-bottom: 0.5rem;">Conversas por anúncio</h3>
+                <div class="chart-wrapper">
+                    <canvas id="graficoBarras" width="400" height="150"></canvas>
+                </div>
+                <p style="color: #4a627a; margin-top: 0.8rem;">O carrossel de R$339 gerou 33 conversas, liderando com folga.</p>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 4 – OTIMIZAÇÕES REALIZADAS -->
+        <section style="margin-top: 4rem;" class="reveal">
+            <h2>Melhorias aplicadas na campanha</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <ul class="lista-marcadores">
+                        <li><span class="check-circle"></span> Pausa do vídeo institucional (custo por conversa alto: R$6,06)</li>
+                        <li><span class="check-circle"></span> Manutenção do carrossel vencedor como principal</li>
+                        <li><span class="check-circle"></span> Criação de uma cópia do carrossel para ampliar alcance</li>
+                        <li><span class="check-circle"></span> Manutenção do anúncio educativo "vista cansada" como teste</li>
+                    </ul>
+                </div>
+                <div class="card" style="background: #e5f0f8; border: none;">
+                    <p style="font-weight: 500; color: #0f3b5c;">Essas mudanças direcionam o investimento para os anúncios que geram mais conversas, reduzindo desperdício.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 5 – NOVA ESTRUTURA + ORÇAMENTO -->
+        <section style="margin-top: 4rem;" class="reveal">
+            <h2>Estrutura atual da campanha</h2>
+            <div class="grid-3">
+                <div class="card" style="text-align: center;">🔵 CARROSSEL R$339 <br><span style="background: #0f3b5c; color:white; padding:0.2rem 1rem; border-radius:60px; font-size:0.8rem; display:inline-block; margin-top:0.7rem;">ativo</span></div>
+                <div class="card" style="text-align: center;">🔵 CARROSSEL R$339 (cópia) <br><span style="background: #0f3b5c; color:white; padding:0.2rem 1rem; border-radius:60px; font-size:0.8rem; display:inline-block; margin-top:0.7rem;">ativo</span></div>
+                <div class="card" style="text-align: center;">🟡 VISTA CANSADA <br><span style="background: #f1c40f; color:#1e3a5f; padding:0.2rem 1rem; border-radius:60px; font-size:0.8rem; display:inline-block; margin-top:0.7rem;">teste</span></div>
+            </div>
+
+            <div class="grid-2" style="margin-top: 2rem;">
+                <div class="card">
+                    <span class="kpi-label">Orçamento anterior (por dia)</span>
+                    <div class="kpi-number">R$ 23</div>
+                </div>
+                <div class="card">
+                    <span class="kpi-label">Orçamento atual (por dia)</span>
+                    <div class="kpi-number">R$ 35</div>
+                </div>
+            </div>
+
+            <!-- gráfico de aumento simples -->
+            <div class="card">
+                <p><strong>Aumento de orçamento:</strong> R$23 → R$35 (+52% de investimento)</p>
+                <div class="chart-wrapper" style="height:90px;">
+                    <canvas id="graficoOrcamento"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 6 – META DE PERFORMANCE -->
+        <section style="margin-top: 4rem;" class="reveal">
+            <h2>Meta de performance (custo ideal)</h2>
+            <div class="card" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                <span class="meta-faixa">R$ 2,00 – R$ 4,00</span>
+                <p style="color: #355570; max-width: 500px;">Campanhas locais de WhatsApp normalmente são saudáveis dentro desse custo por conversa. Estamos dentro da meta com o anúncio vencedor.</p>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 7 – PLANO DE ESCALA -->
+        <section style="margin-top: 4rem;" class="reveal">
+            <h2>Próximos passos da campanha (escala)</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <p style="font-size: 1rem; margin-bottom: 1rem;">Quando a campanha atingir entre <strong>60 e 80 conversas</strong>, vamos criar novas variações baseadas no criativo vencedor (carrossel R$339).</p>
+                    <p><strong>Objetivo:</strong> aumentar o volume de clientes mantendo o custo eficiente.</p>
+                </div>
+                <div class="card">
+                    <div class="plano-item">
+                        <span class="plano-numero">1</span> <span>Novos criativos copiando o carrossel vencedor</span>
+                    </div>
+                    <div class="plano-item">
+                        <span class="plano-numero">2</span> <span>Pausa definitiva de anúncios com custo alto</span>
+                    </div>
+                    <div class="plano-item">
+                        <span class="plano-numero">3</span> <span>Aumento gradual de orçamento (próxima meta: R$45/dia)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO FINAL (MENSAGEM CLARA) -->
+        <hr>
+        <section class="reveal">
+            <div class="footer-message">
+                A campanha já identificou qual formato gera mais conversas.<br>
+                <strong>Agora o foco é escalar os anúncios que trazem mais clientes.</strong>
+            </div>
+        </section>
+    </div>
+
+    <!-- JavaScript Vanilla (animação contadores + scroll reveal + gráficos) -->
+    <script>
+        (function() {
+            // ---------- CONTADORES ANIMADOS ----------
+            const contadores = document.querySelectorAll('.contador');
+            function iniciarContadores() {
+                contadores.forEach(el => {
+                    const alvo = parseInt(el.dataset.alvo, 10);
+                    if (isNaN(alvo)) return;
+                    const divide = el.dataset.divide === '100' ? 100 : 1;
+                    let atual = 0;
+                    const incremento = alvo / 45; // suave
+                    function atualizarNumero() {
+                        atual += incremento;
+                        if (atual < alvo) {
+                            if (divide === 100) {
+                                el.innerText = (atual / 100).toFixed(2);
+                            } else {
+                                el.innerText = Math.floor(atual);
+                            }
+                            requestAnimationFrame(atualizarNumero);
+                        } else {
+                            if (divide === 100) {
+                                el.innerText = (alvo / 100).toFixed(2);
+                            } else {
+                                el.innerText = alvo;
+                            }
+                        }
+                    }
+                    atualizarNumero();
+                });
+            }
+
+            // ---------- SCROLL REVEAL (Intersection Observer) ----------
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px' });
+            reveals.forEach(r => observer.observe(r));
+
+            // ---------- GRÁFICOS CHART.JS ----------
+            window.addEventListener('load', function() {
+                // gráfico de barras (conversas)
+                const ctxBarras = document.getElementById('graficoBarras')?.getContext('2d');
+                if (ctxBarras) {
+                    new Chart(ctxBarras, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Carrossel R$339', 'Vista cansada', 'Vídeo institucional'],
+                            datasets: [{
+                                data: [33, 1, 2],
+                                backgroundColor: ['#0f3b5c', '#88b8d0', '#adc5d6'],
+                                borderRadius: 8,
+                                barPercentage: 0.6
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: { legend: { display: false }, tooltip: { backgroundColor: '#0f2c3f' } },
+                            scales: { y: { beginAtZero: true, grid: { color: '#e2eaf2' } } }
+                        }
+                    });
+                }
+
+                // gráfico de linha (orçamento)
+                const ctxOrc = document.getElementById('graficoOrcamento')?.getContext('2d');
+                if (ctxOrc) {
+                    new Chart(ctxOrc, {
+                        type: 'line',
+                        data: {
+                            labels: ['Anterior', 'Atual'],
+                            datasets: [{
+                                data: [23, 35],
+                                borderColor: '#0f3b5c',
+                                backgroundColor: '#0f3b5c',
+                                tension: 0.1,
+                                pointBackgroundColor: '#0f3b5c',
+                                pointRadius: 5,
+                                fill: false
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: { legend: { display: false } },
+                            scales: { y: { min: 0, max: 40, grid: { color: '#dfe8f0' } } }
+                        }
+                    });
+                }
+
+                // dispara contadores quando a página carregar
+                iniciarContadores();
+            });
+
+            // contadores também se a página já estiver carregada (fallback)
+            if (document.readyState === 'complete') {
+                iniciarContadores();
+            }
+        })();
+    </script>
+
+    <!-- pequeno ajuste de grid legacy -->
+    <style>
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 1.8rem;
+        }
+    </style>
+</body>
+</html>
