@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ótica Visão Clara · relatório de campanha</title>
-    <!-- Fontes e ícones (apenas para suporte visual) -->
+    <title>Relatório de Desempenho · Tráfego Pago</title>
+    <!-- Fontes e ícones -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
@@ -18,21 +18,21 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #ffffff;        /* fundo branco puro */
-            color: #1e293b;                    /* texto suave escuro */
+            background-color: #ffffff;
+            color: #1e293b;
             line-height: 1.5;
             scroll-behavior: smooth;
         }
 
-        /* COR DEEPSEEK / AZUL CARACTERÍSTICO */
         :root {
-            --deep-blue: #4f6af5;              /* tom aproximado do ícone DeepSeek */
-            --deep-light: #eef2ff;              /* variante bem clara para cards */
-            --deep-soft: #d9e2fc;               
+            --deep-blue: #4f6af5;
+            --deep-light: #eef2ff;
+            --deep-soft: #d9e2fc;
             --gray-light: #f8fafc;
+            --gray-border: #e9eef4;
             --shadow-sm: 0 10px 25px -5px rgba(79, 106, 245, 0.08), 0 8px 10px -6px rgba(0,0,0,0.02);
             --shadow-hover: 0 20px 30px -10px rgba(79, 106, 245, 0.15);
-            --border-radius-card: 28px;
+            --border-radius-card: 24px;
         }
 
         .container {
@@ -41,38 +41,37 @@
             padding: 0 24px;
         }
 
-        /* cabeçalho elegante */
+        /* header refinado */
         .header {
             padding: 48px 0 24px 0;
             animation: fadeDown 0.8s ease-out;
         }
 
         .header h1 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 700;
             letter-spacing: -0.02em;
-            background: linear-gradient(145deg, #1e293b 0%, var(--deep-blue) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #0f172a;
             margin-bottom: 12px;
+            line-height: 1.2;
         }
 
         .header .periodo {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 500;
             color: #475569;
             background: var(--deep-light);
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             padding: 8px 24px;
             border-radius: 60px;
-            backdrop-filter: blur(4px);
             border: 1px solid rgba(79, 106, 245, 0.15);
         }
 
-        /* seções com animação de entrada */
+        /* seções com animação */
         section {
-            margin: 72px 0;
+            margin: 80px 0;
             opacity: 0;
             transform: translateY(25px);
             transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1);
@@ -84,7 +83,7 @@
         }
 
         .section-title {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 32px;
             display: flex;
@@ -95,22 +94,17 @@
 
         .section-title i {
             color: var(--deep-blue);
-            font-size: 2rem;
+            font-size: 1.8rem;
             background: var(--deep-light);
-            padding: 12px;
-            border-radius: 60%;
-            box-shadow: var(--shadow-sm);
+            padding: 10px;
+            border-radius: 16px;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .title-underline {
-            height: 4px;
-            width: 80px;
-            background: var(--deep-blue);
-            border-radius: 4px;
-            margin-top: 6px;
-        }
-
-        /* cards e grids */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -122,42 +116,41 @@
             border-radius: var(--border-radius-card);
             padding: 28px 24px;
             box-shadow: var(--shadow-sm);
-            border: 1px solid rgba(79, 106, 245, 0.08);
+            border: 1px solid var(--gray-border);
             transition: all 0.25s ease;
-            animation: cardGlow 6s infinite alternate;
         }
 
         .card:hover {
-            transform: scale(1.02) translateY(-5px);
+            transform: translateY(-4px);
             box-shadow: var(--shadow-hover);
             border-color: var(--deep-blue);
         }
 
-        .card-accent {
-            border-top: 5px solid var(--deep-blue);
-        }
-
         .metric-highlight {
-            font-size: 2.7rem;
-            font-weight: 800;
+            font-size: 2.5rem;
+            font-weight: 700;
             color: var(--deep-blue);
             line-height: 1.1;
         }
 
         .metric-label {
-            color: #334155;
+            color: #475569;
             font-weight: 500;
-            letter-spacing: 0.3px;
-            margin-top: 10px;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .stat-badge {
             background: var(--deep-light);
             color: var(--deep-blue);
-            padding: 4px 12px;
+            padding: 6px 14px;
             border-radius: 40px;
             font-weight: 600;
             font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .bullet-list {
@@ -173,13 +166,9 @@
 
         .bullet-list li i {
             color: var(--deep-blue);
-            font-size: 1.3rem;
-            min-width: 28px;
-            margin-top: 2px;
-        }
-
-        .bullet-list li strong {
-            color: #0f172a;
+            font-size: 1.1rem;
+            min-width: 24px;
+            margin-top: 3px;
         }
 
         .kpi-row {
@@ -188,9 +177,9 @@
             justify-content: space-between;
             gap: 16px;
             background: var(--gray-light);
-            border-radius: 32px;
-            padding: 28px;
-            border: 1px solid #e2e8f0;
+            border-radius: 28px;
+            padding: 32px;
+            border: 1px solid var(--gray-border);
         }
 
         .kpi-item {
@@ -209,21 +198,21 @@
             font-size: 0.9rem;
         }
 
-        /* gráficos simulados com CSS (puramente ilustrativo) */
+        /* gráficos refinados */
         .dash-graph {
             background: white;
-            border-radius: 32px;
+            border-radius: 28px;
             padding: 28px 20px 20px 20px;
             box-shadow: var(--shadow-sm);
-            border: 1px solid #e9eef4;
+            border: 1px solid var(--gray-border);
         }
 
         .graph-bars {
             display: flex;
             align-items: flex-end;
             justify-content: space-around;
-            height: 180px;
-            margin: 20px 0 10px 0;
+            height: 200px;
+            margin: 24px 0 10px 0;
         }
 
         .bar-container {
@@ -235,17 +224,18 @@
 
         .bar {
             width: 36px;
-            background: var(--deep-blue);
-            border-radius: 20px 20px 6px 6px;
+            background: linear-gradient(0deg, #3a50d9, var(--deep-blue));
+            border-radius: 12px 12px 4px 4px;
             transition: height 1.2s cubic-bezier(0.22, 0.97, 0.33, 1.1);
-            height: 0;  /* será definido via JS dinamicamente */
-            box-shadow: 0 -2px 12px rgba(79, 106, 245, 0.4);
+            height: 0;
+            box-shadow: 0 -2px 10px rgba(79, 106, 245, 0.3);
         }
 
         .bar-label {
-            margin-top: 10px;
-            font-weight: 600;
-            color: #1e293b;
+            margin-top: 12px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: #475569;
         }
 
         .gender-pie {
@@ -260,18 +250,26 @@
             width: 140px;
             height: 140px;
             border-radius: 50%;
-            background: conic-gradient(var(--deep-blue) 0deg 298deg, #cbd5e1 298deg 360deg);
+            background: conic-gradient(var(--deep-blue) 0deg 298deg, #e2e8f0 298deg 360deg);
             box-shadow: var(--shadow-sm);
-            animation: pulsePie 2s infinite alternate;
         }
 
-        .pie-legend span {
-            display: inline-block;
+        .pie-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-color {
             width: 16px;
             height: 16px;
-            background: var(--deep-blue);
             border-radius: 4px;
-            margin-right: 8px;
         }
 
         .next-steps-grid {
@@ -284,72 +282,65 @@
             background: var(--deep-light);
             border-radius: 24px;
             padding: 26px 20px;
-            border: 1px solid white;
+            border: 1px solid transparent;
             transition: all 0.2s;
         }
 
         .step-item:hover {
             background: white;
             border-color: var(--deep-blue);
+            box-shadow: var(--shadow-sm);
         }
 
         .step-number {
             background: var(--deep-blue);
             color: white;
-            width: 42px;
-            height: 42px;
-            font-size: 1.4rem;
-            font-weight: 700;
-            border-radius: 60%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 20px;
         }
 
-        /* animações globais */
+        .footer-note {
+            text-align: center;
+            padding: 40px 0 32px 0;
+            color: #64748b;
+            border-top: 1px solid var(--deep-soft);
+            margin-top: 60px;
+            font-size: 0.95rem;
+        }
+
+        .btn-outline {
+            border: 1.5px solid var(--deep-blue);
+            color: var(--deep-blue);
+            background: transparent;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            transition: 0.2s;
+            cursor: default;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-outline i {
+            font-size: 1rem;
+        }
+
         @keyframes fadeDown {
             0% { opacity: 0; transform: translateY(-20px); }
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes cardGlow {
-            0% { box-shadow: 0 10px 25px -5px rgba(79,106,245,0.08); }
-            100% { box-shadow: 0 18px 30px -8px rgba(79,106,245,0.18); }
-        }
-
-        @keyframes pulsePie {
-            0% { transform: scale(1); opacity: 0.95; }
-            100% { transform: scale(1.02); opacity: 1; }
-        }
-
-        .footer-note {
-            text-align: center;
-            padding: 42px 0 32px 0;
-            color: #64748b;
-            border-top: 2px dashed var(--deep-soft);
-            margin-top: 60px;
-        }
-
-        /* botões */
-        .btn-outline {
-            border: 1.5px solid var(--deep-blue);
-            color: var(--deep-blue);
-            background: transparent;
-            padding: 12px 28px;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: 0.2s;
-            cursor: default;
-        }
-
-        .btn-outline i {
-            margin-right: 8px;
-        }
-
-        /* responsividade */
         @media (max-width: 640px) {
-            .header h1 { font-size: 2.2rem; }
+            .header h1 { font-size: 2rem; }
+            .section-title { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -357,9 +348,9 @@
     <div class="container">
         <!-- cabeçalho -->
         <header class="header">
-            <h1>RELATÓRIO DE DESEMPENHO E PLANO DE AÇÃO</h1>
+            <h1>RELATÓRIO DE DESEMPENHO<br>E PLANO DE AÇÃO – TRÁFEGO PAGO</h1>
             <div class="periodo">
-                <i class="fas fa-calendar-alt" style="margin-right: 10px; color: var(--deep-blue);"></i>04 de março até hoje
+                <i class="far fa-calendar-alt"></i> 04 de março até hoje
             </div>
             <div style="margin-top: 24px;">
                 <span class="stat-badge"><i class="fas fa-check-circle"></i> campanha validada · 147 conversas</span>
@@ -369,25 +360,26 @@
         <!-- 1. visão geral -->
         <section id="visao-geral">
             <div class="section-title">
-                <i class="fas fa-bullseye"></i> 
+                <i class="fas fa-chart-pie"></i>
                 <span>1. visão geral do que foi feito</span>
             </div>
             <div class="card">
-                <p style="font-size: 1.2rem; margin-bottom: 20px;">Campanhas facebook/instagram → WhatsApp. Testamos múltiplos criativos:</p>
-                <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-                    <span class="stat-badge"><i class="fas fa-image"></i> carrossel com preço</span>
+                <p style="font-size: 1.2rem; margin-bottom: 20px; color: #0f172a;">Campanhas Facebook/Instagram com objetivo de gerar conversas no WhatsApp. Foram testados múltiplos criativos:</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px;">
+                    <span class="stat-badge"><i class="fas fa-images"></i> oferta direta (carrossel)</span>
                     <span class="stat-badge"><i class="fas fa-eye"></i> dor (vista cansada)</span>
                     <span class="stat-badge"><i class="fas fa-video"></i> vídeo institucional</span>
                 </div>
-                <p style="margin-top: 25px; background: var(--deep-light); padding: 18px; border-radius: 20px;">
-                    <i class="fas fa-chart-line" style="color: var(--deep-blue); margin-right: 8px;"></i>
-                    <strong>objetivo:</strong> testar abordagens para entender interesse, reação e melhor comunicação. 
-                    <span style="display: block; margin-top: 12px; font-weight: 600;"> resultado: campanha validada com sucesso.</span>
-                </p>
+                <div style="background: var(--deep-light); padding: 20px; border-radius: 20px;">
+                    <p style="display: flex; gap: 12px;">
+                        <i class="fas fa-bullseye" style="color: var(--deep-blue);"></i>
+                        <span><strong>Objetivo:</strong> testar abordagens para entender interesse, reação e melhor comunicação. Resultado: campanha validada com sucesso.</span>
+                    </p>
+                </div>
             </div>
         </section>
 
-        <!-- 2. resultados alcançados + indicadores -->
+        <!-- 2. resultados alcançados -->
         <section id="resultados">
             <div class="section-title">
                 <i class="fas fa-trophy"></i>
@@ -407,59 +399,70 @@
                     <div class="metric-label">custo médio por conversa</div>
                 </div>
             </div>
-            <div style="margin-top: 24px; background: #eef2ff; border-radius: 32px; padding: 20px;">
-                <i class="fas fa-lightbulb" style="color: var(--deep-blue); margin-right: 6px;"></i>
-                a cada R$ 4, uma pessoa interessada chamou no whatsapp. eficiência mesmo com múltiplos anúncios.
+            <div style="margin-top: 24px; background: #eef2ff; border-radius: 24px; padding: 20px; display: flex; gap: 12px; align-items: center;">
+                <i class="fas fa-lightbulb" style="color: var(--deep-blue);"></i>
+                <span>A cada R$ 4 investidos, uma pessoa interessada entrou em contato. Eficiência geral da campanha.</span>
             </div>
         </section>
 
-        <!-- 3. comportamento + gráfico animado (java animação) -->
+        <!-- 3. comportamento do desempenho + gráfico -->
         <section id="comportamento">
             <div class="section-title">
-                <i class="fas fa-wave-square"></i>
+                <i class="fas fa-chart-line"></i>
                 <span>3. comportamento do desempenho</span>
             </div>
             <div class="dash-graph">
-                <p><i class="fas fa-chart-simple" style="color:var(--deep-blue);"></i> <strong>volume de conversas (simulado)</strong> — pico no meio, queda por saturação</p>
-                <!-- gráfico de barras interativo via JS -->
+                <p style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px;">
+                    <i class="fas fa-chart-bar" style="color:var(--deep-blue);"></i>
+                    <strong>Volume de conversas (simulado)</strong> — pico no meio do período, queda gradual
+                </p>
                 <div class="graph-bars" id="graficoBarras">
-                    <div class="bar-container"><div class="bar" id="bar1" style="height: 30px;"></div><span class="bar-label">04 mar</span></div>
-                    <div class="bar-container"><div class="bar" id="bar2" style="height: 60px;"></div><span class="bar-label">meio</span></div>
-                    <div class="bar-container"><div class="bar" id="bar3" style="height: 98px;"></div><span class="bar-label">pico</span></div>
-                    <div class="bar-container"><div class="bar" id="bar4" style="height: 70px;"></div><span class="bar-label">final</span></div>
-                    <div class="bar-container"><div class="bar" id="bar5" style="height: 42px;"></div><span class="bar-label">hoje</span></div>
+                    <div class="bar-container"><div class="bar" id="bar1" style="height: 42px;"></div><span class="bar-label">04 mar</span></div>
+                    <div class="bar-container"><div class="bar" id="bar2" style="height: 98px;"></div><span class="bar-label">meio</span></div>
+                    <div class="bar-container"><div class="bar" id="bar3" style="height: 146px;"></div><span class="bar-label">pico</span></div>
+                    <div class="bar-container"><div class="bar" id="bar4" style="height: 112px;"></div><span class="bar-label">final</span></div>
+                    <div class="bar-container"><div class="bar" id="bar5" style="height: 70px;"></div><span class="bar-label">hoje</span></div>
                 </div>
-                <p class="small-note" style="margin-top:15px"> queda gradual: repetição + saturação. campanha pausada por falta de saldo, não por desempenho.</p>
+                <p class="small-note" style="margin-top:20px; display: flex; gap: 8px;">
+                    <i class="fas fa-info-circle"></i> Queda gradual: repetição dos anúncios e saturação. Campanha pausada por falta de saldo, não por desempenho.
+                </p>
             </div>
         </section>
 
-        <!-- 4. perfil público identificado (com gráfico pizza) -->
+        <!-- 4. perfil do público -->
         <section id="publico">
             <div class="section-title">
                 <i class="fas fa-users"></i>
-                <span>4. perfil do público</span>
+                <span>4. perfil do público identificado</span>
             </div>
             <div class="card-grid">
-                <div class="card card-accent">
+                <div class="card">
                     <div class="gender-pie">
                         <div class="pie-chart"></div>
-                        <div><span class="metric-highlight">83%</span> <span class="metric-label">mulheres</span></div>
-                    </div>
-                    <div class="pie-legend" style="margin-top: 24px; text-align: center;">
-                        <span></span> feminino 83% · <span style="background:#cbd5e1;"></span> outros 17%
+                        <div class="pie-legend">
+                            <div class="legend-item"><span class="legend-color" style="background: var(--deep-blue);"></span> feminino 83%</div>
+                            <div class="legend-item"><span class="legend-color" style="background: #e2e8f0;"></span> outros 17%</div>
+                        </div>
                     </div>
                 </div>
                 <div class="card">
-                    <i class="fas fa-venus-mars" style="font-size:2rem; color:var(--deep-blue);"></i>
-                    <div style="font-size: 2rem; font-weight: 700; margin: 12px 0;">35–64 anos</div>
-                    <div>faixa principal · pico entre <strong>45–54 anos</strong></div>
-                    <hr style="margin:20px 0; border-color:#eef2ff;">
-                    <p><i class="fas fa-map-pin"></i> público dominante identificado: direcionamento mais preciso agora.</p>
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <div>
+                            <i class="fas fa-venus-mars" style="font-size:2rem; color:var(--deep-blue); margin-bottom: 8px;"></i>
+                            <div class="metric-highlight">35–64 anos</div>
+                            <div class="metric-label">faixa etária principal</div>
+                        </div>
+                        <div>
+                            <span class="stat-badge"><i class="fas fa-chart-simple"></i> pico: 45–54 anos</span>
+                        </div>
+                        <hr style="border-color: var(--deep-soft);">
+                        <p><i class="fas fa-crosshairs"></i> Público dominante identificado, permitindo direcionamento mais preciso.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- 5. aprendizados -->
+        <!-- 5. principais aprendizados -->
         <section id="aprendizados">
             <div class="section-title">
                 <i class="fas fa-graduation-cap"></i>
@@ -468,113 +471,92 @@
             <div class="card-grid">
                 <div class="card">
                     <ul class="bullet-list">
-                        <li><i class="fas fa-circle-check"></i> <strong>Demanda real</strong> — serviço tem procura na região</li>
-                        <li><i class="fas fa-circle-check"></i> <strong>WhatsApp funciona</strong> — modelo de anúncios validado</li>
-                        <li><i class="fas fa-circle-check"></i> <strong>Criativos diversos</strong> performam, mas precisam de renovação</li>
-                        <li><i class="fas fa-circle-check"></i> <strong>Público dominante:</strong> mulheres +35</li>
-                        <li><i class="fas fa-circle-check"></i> <strong>Custo saudável</strong> — R$4,18 por contato</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Demanda real</strong> — serviço tem procura na região</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>WhatsApp funciona</strong> — modelo de anúncios validado</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Criativos diversos</strong> funcionam, mas precisam de renovação</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Público dominante:</strong> mulheres acima de 35 anos</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Custo saudável</strong> — R$ 4,18 por contato</li>
                     </ul>
                 </div>
                 <div class="card" style="background: var(--deep-light);">
-                    <i class="fas fa-repeat" style="color:var(--deep-blue); font-size:2rem;"></i>
-                    <p style="margin-top:15px;"><strong>Repetição reduz desempenho</strong> ao longo do tempo — por isso vamos atualizar.</p>
+                    <i class="fas fa-repeat" style="font-size:2rem; color:var(--deep-blue); margin-bottom: 16px;"></i>
+                    <p><strong>Repetição reduz desempenho</strong> ao longo do tempo — necessidade de renovação dos anúncios.</p>
                 </div>
             </div>
         </section>
 
-        <!-- 6. próximos passos + plano de ação -->
+        <!-- 6. próximos passos -->
         <section id="proximos-passos">
             <div class="section-title">
                 <i class="fas fa-forward-step"></i>
                 <span>6. próximos passos (a partir de segunda)</span>
             </div>
             <div class="next-steps-grid">
-                <div class="step-item"><span class="step-number">1</span> <strong>Direcionamento preciso</strong><br>foco em mulheres 35+; redução de público frio</div>
-                <div class="step-item"><span class="step-number">2</span> <strong>Novos anúncios</strong><br>comunicação atualizada + promoção</div>
-                <div class="step-item"><span class="step-number">3</span> <strong>Estrutura organizada</strong><br>separação de públicos, melhor verba</div>
-                <div class="step-item"><span class="step-number">4</span> <strong>Otimização contínua</strong><br>monitoramento diário, ajustes rápidos</div>
+                <div class="step-item"><span class="step-number">1</span> <strong>Direcionamento mais preciso</strong><br>foco em mulheres 35+; redução de investimento em públicos de baixo retorno</div>
+                <div class="step-item"><span class="step-number">2</span> <strong>Novos anúncios</strong><br>comunicação atualizada + promoção como atrativo</div>
+                <div class="step-item"><span class="step-number">3</span> <strong>Estrutura organizada</strong><br>separação de públicos e melhor distribuição de orçamento</div>
+                <div class="step-item"><span class="step-number">4</span> <strong>Otimização contínua</strong><br>monitoramento diário e ajustes rápidos</div>
             </div>
         </section>
 
-        <!-- 7. expectativa + conclusão -->
+        <!-- 7. expectativa e conclusão -->
         <section id="expectativa">
             <div class="section-title">
                 <i class="fas fa-rocket"></i>
                 <span>7. expectativa & conclusão</span>
             </div>
-            <div class="card" style="background: linear-gradient(145deg, white, var(--deep-light)); border:2px solid white;">
-                <p style="font-size:1.5rem; font-weight:600;">Manter ou reduzir o custo por conversa</p>
-                <p style="font-size:1.3rem;">↑ aumentar volume de contatos</p>
-                <p style="margin: 25px 0;"> <strong>conclusão:</strong> campanha inicial cumpriu validação. Fase de otimização e crescimento começa.</p>
-                <div class="btn-outline" style="display: inline-block;"><i class="fas fa-chart-pie"></i> dashboard atualizado</div>
+            <div class="card" style="background: linear-gradient(145deg, white, var(--deep-light));">
+                <div style="display: flex; flex-direction: column; gap: 16px;">
+                    <div>
+                        <span class="stat-badge" style="background: var(--deep-blue); color: white;">meta</span>
+                    </div>
+                    <p style="font-size:1.3rem; font-weight:600;">Manter ou reduzir o custo por conversa</p>
+                    <p style="font-size:1.2rem;">Aumentar o volume de contatos</p>
+                    <p style="margin: 16px 0;">Melhor aproveitamento do investimento</p>
+                    <hr style="border-color: var(--deep-soft);">
+                    <p><strong>Conclusão:</strong> campanha inicial cumpriu seu papel de validação. Início da fase de otimização e crescimento.</p>
+                    <div class="btn-outline" style="align-self: flex-start; margin-top: 8px;">
+                        <i class="fas fa-chart-pie"></i> dashboard atualizado
+                    </div>
+                </div>
             </div>
         </section>
 
         <footer class="footer-note">
-            <i class="fas fa-deepseek" style="color: var(--deep-blue);"> </i> relatório interativo · Criado por Rafael Gacia · dados reais 04 março até hoje
+            <i class="fas fa-chart-simple" style="color: var(--deep-blue);"></i> relatório de desempenho · dados reais: 04 março até hoje · Rafael Gacia
         </footer>
     </div>
 
-    <!-- animações com javascript (vanilla) -->
     <script>
         (function() {
-            // animação de revelar seções no scroll
+            // scroll reveal
             const sections = document.querySelectorAll('section');
-            
             function checkReveal() {
                 const windowHeight = window.innerHeight;
                 const revealThreshold = 120;
-                
                 sections.forEach(section => {
                     const rect = section.getBoundingClientRect();
                     if (rect.top < windowHeight - revealThreshold) {
                         section.classList.add('revealed');
-                    } else {
-                        // (opcional: se quiser remover quando sair, mas vamos manter uma vez revelado)
-                        // manter como está para não sumir depois
                     }
                 });
             }
-
-            // executa no load e scroll
             window.addEventListener('load', checkReveal);
             window.addEventListener('scroll', checkReveal);
-            checkReveal(); // chamada imediata
+            checkReveal();
 
-            // animação das barras do gráfico: aumentar gradativamente no load (simulando dados atuais)
-            const bar1 = document.getElementById('bar1');
-            const bar2 = document.getElementById('bar2');
-            const bar3 = document.getElementById('bar3');
-            const bar4 = document.getElementById('bar4');
-            const bar5 = document.getElementById('bar5');
-
-            // valores que representam volume (altura em px)
-            const heights = [42, 98, 146, 112, 70];  // base de proporção visual
-            
-            function animateBars() {
-                if (bar1) bar1.style.height = heights[0] + 'px';
-                if (bar2) bar2.style.height = heights[1] + 'px';
-                if (bar3) bar3.style.height = heights[2] + 'px';
-                if (bar4) bar4.style.height = heights[3] + 'px';
-                if (bar5) bar5.style.height = heights[4] + 'px';
-            }
-
-            // iniciar animação suave depois de um pequeno delay (já começa baixo e vai ao correto)
-            setTimeout(() => {
-                animateBars();
-            }, 200);
-
-            // hover sutil nos cards já tem no css, mas podemos incrementar
-            // adicionar tooltip data dinâmica?
-
-            // bônus: animação infinita leve para pizza (já está com pulsePie)
+            // barras já começam com altura definida, mas garantimos a transição
+            // (as alturas já estão inline, então a transição ocorre do 0 até o valor setado)
+            // para reforçar a animação, resetamos brevemente?
+            const bars = document.querySelectorAll('.bar');
+            bars.forEach(bar => {
+                const targetHeight = bar.style.height;
+                bar.style.height = '0';
+                setTimeout(() => {
+                    bar.style.height = targetHeight;
+                }, 150);
+            });
         })();
     </script>
-
-    <!-- ajuste extra para responsividade das barras -->
-    <style>
-        .bar { transition: height 1.2s cubic-bezier(0.22, 0.97, 0.33, 1.1); }
-        #graficoBarras .bar { min-height: 6px; background: linear-gradient(0deg, #3a50d9, var(--deep-blue)); }
-    </style>
 </body>
 </html>
