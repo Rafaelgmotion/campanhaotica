@@ -1,562 +1,495 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relatório de Desempenho · Tráfego Pago</title>
-    <!-- Fontes e ícones -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>I-deal Ótica · Armação Grátis + Exame · Campanha Meta WhatsApp</title>
+  <meta name="description" content="Campanha de engajamento para I-deal Ótica: armação selecionada grátis + exame de vista todos os dias. Arquitetura Meta Ads com 3 criativos e metas claras.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #ffffff;
-            color: #1e293b;
-            line-height: 1.5;
-            scroll-behavior: smooth;
-        }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #F4F7FC;
+      padding: 2rem;
+    }
 
-        :root {
-            --deep-blue: #4f6af5;
-            --deep-light: #eef2ff;
-            --deep-soft: #d9e2fc;
-            --gray-light: #f8fafc;
-            --gray-border: #e9eef4;
-            --shadow-sm: 0 10px 25px -5px rgba(79, 106, 245, 0.08), 0 8px 10px -6px rgba(0,0,0,0.02);
-            --shadow-hover: 0 20px 30px -10px rgba(79, 106, 245, 0.15);
-            --border-radius-card: 24px;
-        }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+    :root {
+      --primary: #0B2F4E;
+      --accent: #E67E22;
+      --accent-light: #F39C12;
+    }
 
-        /* header refinado */
-        .header {
-            padding: 48px 0 24px 0;
-            animation: fadeDown 0.8s ease-out;
-        }
+    /* ===== HERO REFORMULADO: FONTE MAIOR + CENTRALIZADO ===== */
+    .hero {
+      background: linear-gradient(110deg, #00379c 0%, #0049e7 100%);
+      color: white;
+      border-radius: 2rem;
+      padding: 3rem 2rem;
+      margin-bottom: 2rem;
+      text-align: center;        /* ← centraliza todo o conteúdo textual */
+    }
 
-        .header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            color: #0f172a;
-            margin-bottom: 12px;
-            line-height: 1.2;
-        }
+    .hero h1 {
+      font-size: 4rem;           /* fonte bem maior */
+      margin-bottom: 1rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
 
-        .header .periodo {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: #475569;
-            background: var(--deep-light);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 24px;
-            border-radius: 60px;
-            border: 1px solid rgba(79, 106, 245, 0.15);
-        }
+    @media (max-width: 680px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
 
-        /* seções com animação */
-        section {
-            margin: 80px 0;
-            opacity: 0;
-            transform: translateY(25px);
-            transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1);
-        }
+    .hero h1 span {
+      color: var(--accent-light);
+      border-bottom: 4px solid var(--accent);
+      display: inline-block;
+      padding-bottom: 4px;
+    }
 
-        section.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 550px;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0.92;
+      line-height: 1.4;
+    }
 
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 32px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: #0f172a;
-        }
+    /* espaçamento entre parágrafos */
+    .hero p + p {
+      margin-top: 0.5rem;
+    }
 
-        .section-title i {
-            color: var(--deep-blue);
-            font-size: 1.8rem;
-            background: var(--deep-light);
-            padding: 10px;
-            border-radius: 16px;
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    .offer-highlight {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;   /* centraliza os chips */
+      gap: 0.8rem;
+      margin-top: 1.8rem;
+    }
 
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 28px;
-        }
+    .offer-chip {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(2px);
+      border-radius: 60px;
+      padding: 0.5rem 1.2rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: 0.1s;
+    }
 
-        .card {
-            background: white;
-            border-radius: var(--border-radius-card);
-            padding: 28px 24px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--gray-border);
-            transition: all 0.25s ease;
-        }
+    /* apenas para demonstração de contexto */
+    .note {
+      margin-top: 2rem;
+      background: #fff6e5;
+      border-radius: 1rem;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.85rem;
+    }
 
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--deep-blue);
-        }
+    .offer-highlight {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin: 1.2rem 0 0.5rem;
+    }
 
-        .metric-highlight {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--deep-blue);
-            line-height: 1.1;
-        }
+    .offer-chip {
+      background: rgba(255,255,255,0.12);
+      border-radius: 60px;
+      padding: 0.4rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
 
-        .metric-label {
-            color: #475569;
-            font-weight: 500;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+    .card {
+      background: var(--card-white);
+      border-radius: 1.5rem;
+      padding: 1.6rem 1.8rem;
+      margin-bottom: 1.8rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      border: 1px solid var(--border-color);
+    }
 
-        .stat-badge {
-            background: var(--deep-light);
-            color: var(--deep-blue);
-            padding: 6px 14px;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
+    .config-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
 
-        .bullet-list {
-            list-style: none;
-        }
+    .config-block {
+      background: #F9FBFE;
+      border-radius: 1.2rem;
+      padding: 1.2rem;
+      border-left: 4px solid var(--accent);
+    }
 
-        .bullet-list li {
-            margin: 16px 0;
-            display: flex;
-            gap: 16px;
-            align-items: flex-start;
-        }
+    .config-block h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-        .bullet-list li i {
-            color: var(--deep-blue);
-            font-size: 1.1rem;
-            min-width: 24px;
-            margin-top: 3px;
-        }
+    hr {
+      margin: 1rem 0;
+      border-color: var(--border-color);
+    }
 
-        .kpi-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 16px;
-            background: var(--gray-light);
-            border-radius: 28px;
-            padding: 32px;
-            border: 1px solid var(--gray-border);
-        }
+    .creative-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
 
-        .kpi-item {
-            flex: 1 1 160px;
-            text-align: center;
-        }
+    .creative {
+      background: white;
+      border-radius: 1.2rem;
+      padding: 1.2rem;
+      flex: 1;
+      min-width: 240px;
+      border: 1px solid var(--border-color);
+      transition: 0.1s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
 
-        .kpi-number {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--deep-blue);
-        }
+    .creative-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
 
-        .small-note {
-            color: #64748b;
-            font-size: 0.9rem;
-        }
+    .creative h4 {
+      font-size: 1.1rem;
+      margin-bottom: 0.6rem;
+    }
 
-        /* gráficos refinados */
-        .dash-graph {
-            background: white;
-            border-radius: 28px;
-            padding: 28px 20px 20px 20px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--gray-border);
-        }
+    .copy-text {
+      font-size: 0.9rem;
+      background: #F8FAFE;
+      padding: 0.8rem;
+      border-radius: 1rem;
+      margin: 0.8rem 0;
+      border-left: 3px solid var(--accent);
+      font-weight: 500;
+      color: #1f3a4b;
+    }
 
-        .graph-bars {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-around;
-            height: 200px;
-            margin: 24px 0 10px 0;
-        }
+    .flow-simple {
+      background: #F0F6FA;
+      border-radius: 1.2rem;
+      padding: 1.2rem;
+      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
 
-        .bar-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 70px;
-        }
+    .flow-step {
+      background: white;
+      border-radius: 2rem;
+      padding: 0.5rem 1.2rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
 
-        .bar {
-            width: 36px;
-            background: linear-gradient(0deg, #3a50d9, var(--deep-blue));
-            border-radius: 12px 12px 4px 4px;
-            transition: height 1.2s cubic-bezier(0.22, 0.97, 0.33, 1.1);
-            height: 0;
-            box-shadow: 0 -2px 10px rgba(79, 106, 245, 0.3);
-        }
+    .metric-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 1rem;
+      overflow: hidden;
+    }
 
-        .bar-label {
-            margin-top: 12px;
-            font-weight: 500;
-            font-size: 0.9rem;
-            color: #475569;
-        }
+    .metric-table th {
+      background-color: var(--primary);
+      color: white;
+      padding: 0.9rem 1rem;
+      text-align: left;
+      font-weight: 600;
+    }
 
-        .gender-pie {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
+    .metric-table td {
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid #EFF3F8;
+    }
 
-        .pie-chart {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            background: conic-gradient(var(--deep-blue) 0deg 298deg, #e2e8f0 298deg 360deg);
-            box-shadow: var(--shadow-sm);
-        }
+    .goal-box {
+      background: #E9F1F9;
+      border-radius: 1.2rem;
+      padding: 1.2rem;
+      text-align: center;
+      margin-top: 1rem;
+    }
 
-        .pie-legend {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
+    .goal-numbers {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.8rem;
+      margin: 1rem 0;
+    }
 
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+    .goal-item {
+      background: white;
+      border-radius: 1rem;
+      padding: 0.8rem;
+      flex: 1;
+      text-align: center;
+      font-weight: 700;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
 
-        .legend-color {
-            width: 16px;
-            height: 16px;
-            border-radius: 4px;
-        }
+    .btn-wa {
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.8rem;
+      border-radius: 60px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: 0.2s;
+      text-decoration: none;
+    }
 
-        .next-steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-            gap: 20px;
-        }
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      padding: 1.5rem 0;
+      font-size: 0.8rem;
+      color: #5b7a9a;
+    }
 
-        .step-item {
-            background: var(--deep-light);
-            border-radius: 24px;
-            padding: 26px 20px;
-            border: 1px solid transparent;
-            transition: all 0.2s;
-        }
-
-        .step-item:hover {
-            background: white;
-            border-color: var(--deep-blue);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .step-number {
-            background: var(--deep-blue);
-            color: white;
-            width: 40px;
-            height: 40px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .footer-note {
-            text-align: center;
-            padding: 40px 0 32px 0;
-            color: #64748b;
-            border-top: 1px solid var(--deep-soft);
-            margin-top: 60px;
-            font-size: 0.95rem;
-        }
-
-        .btn-outline {
-            border: 1.5px solid var(--deep-blue);
-            color: var(--deep-blue);
-            background: transparent;
-            padding: 10px 24px;
-            border-radius: 40px;
-            font-weight: 600;
-            transition: 0.2s;
-            cursor: default;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-outline i {
-            font-size: 1rem;
-        }
-
-        @keyframes fadeDown {
-            0% { opacity: 0; transform: translateY(-20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 640px) {
-            .header h1 { font-size: 2rem; }
-            .section-title { font-size: 1.5rem; }
-        }
-    </style>
+    @media (max-width: 700px) {
+      .container {
+        padding: 1rem;
+      }
+      .card {
+        padding: 1.2rem;
+      }
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <!-- cabeçalho -->
-        <header class="header">
-            <h1>RELATÓRIO DE DESEMPENHO<br>E PLANO DE AÇÃO – TRÁFEGO PAGO</h1>
-            <div class="periodo">
-                <i class="far fa-calendar-alt"></i> 04 de março até hoje
-            </div>
-            <div style="margin-top: 24px;">
-                <span class="stat-badge"><i class="fas fa-check-circle"></i> campanha validada · 147 conversas</span>
-            </div>
-        </header>
+<div class="container">
 
-        <!-- 1. visão geral -->
-        <section id="visao-geral">
-            <div class="section-title">
-                <i class="fas fa-chart-pie"></i>
-                <span>1. visão geral do que foi feito</span>
-            </div>
-            <div class="card">
-                <p style="font-size: 1.2rem; margin-bottom: 20px; color: #0f172a;">Campanhas Facebook/Instagram com objetivo de gerar conversas no WhatsApp. Foram testados múltiplos criativos:</p>
-                <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px;">
-                    <span class="stat-badge"><i class="fas fa-images"></i> oferta direta (carrossel)</span>
-                    <span class="stat-badge"><i class="fas fa-eye"></i> dor (vista cansada)</span>
-                    <span class="stat-badge"><i class="fas fa-video"></i> vídeo institucional</span>
-                </div>
-                <div style="background: var(--deep-light); padding: 20px; border-radius: 20px;">
-                    <p style="display: flex; gap: 12px;">
-                        <i class="fas fa-bullseye" style="color: var(--deep-blue);"></i>
-                        <span><strong>Objetivo:</strong> testar abordagens para entender interesse, reação e melhor comunicação. Resultado: campanha validada com sucesso.</span>
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 2. resultados alcançados -->
-        <section id="resultados">
-            <div class="section-title">
-                <i class="fas fa-trophy"></i>
-                <span>2. resultados alcançados</span>
-            </div>
-            <div class="kpi-row">
-                <div class="kpi-item">
-                    <div class="kpi-number">R$ 614,98</div>
-                    <div class="metric-label">total investido</div>
-                </div>
-                <div class="kpi-item">
-                    <div class="kpi-number">147</div>
-                    <div class="metric-label">conversas iniciadas</div>
-                </div>
-                <div class="kpi-item">
-                    <div class="kpi-number">R$ 4,18</div>
-                    <div class="metric-label">custo médio por conversa</div>
-                </div>
-            </div>
-            <div style="margin-top: 24px; background: #eef2ff; border-radius: 24px; padding: 20px; display: flex; gap: 12px; align-items: center;">
-                <i class="fas fa-lightbulb" style="color: var(--deep-blue);"></i>
-                <span>A cada R$ 4 investidos, uma pessoa interessada entrou em contato. Eficiência geral da campanha.</span>
-            </div>
-        </section>
-
-        <!-- 3. comportamento do desempenho + gráfico -->
-        <section id="comportamento">
-            <div class="section-title">
-                <i class="fas fa-chart-line"></i>
-                <span>3. comportamento do desempenho</span>
-            </div>
-            <div class="dash-graph">
-                <p style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px;">
-                    <i class="fas fa-chart-bar" style="color:var(--deep-blue);"></i>
-                    <strong>Volume de conversas (simulado)</strong> — pico no meio do período, queda gradual
-                </p>
-                <div class="graph-bars" id="graficoBarras">
-                    <div class="bar-container"><div class="bar" id="bar1" style="height: 42px;"></div><span class="bar-label">04 mar</span></div>
-                    <div class="bar-container"><div class="bar" id="bar2" style="height: 98px;"></div><span class="bar-label">meio</span></div>
-                    <div class="bar-container"><div class="bar" id="bar3" style="height: 146px;"></div><span class="bar-label">pico</span></div>
-                    <div class="bar-container"><div class="bar" id="bar4" style="height: 112px;"></div><span class="bar-label">final</span></div>
-                    <div class="bar-container"><div class="bar" id="bar5" style="height: 70px;"></div><span class="bar-label">hoje</span></div>
-                </div>
-                <p class="small-note" style="margin-top:20px; display: flex; gap: 8px;">
-                    <i class="fas fa-info-circle"></i> Queda gradual: repetição dos anúncios e saturação. Campanha pausada por falta de saldo, não por desempenho.
-                </p>
-            </div>
-        </section>
-
-        <!-- 4. perfil do público -->
-        <section id="publico">
-            <div class="section-title">
-                <i class="fas fa-users"></i>
-                <span>4. perfil do público identificado</span>
-            </div>
-            <div class="card-grid">
-                <div class="card">
-                    <div class="gender-pie">
-                        <div class="pie-chart"></div>
-                        <div class="pie-legend">
-                            <div class="legend-item"><span class="legend-color" style="background: var(--deep-blue);"></span> feminino 83%</div>
-                            <div class="legend-item"><span class="legend-color" style="background: #e2e8f0;"></span> outros 17%</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div style="display: flex; flex-direction: column; gap: 16px;">
-                        <div>
-                            <i class="fas fa-venus-mars" style="font-size:2rem; color:var(--deep-blue); margin-bottom: 8px;"></i>
-                            <div class="metric-highlight">35–64 anos</div>
-                            <div class="metric-label">faixa etária principal</div>
-                        </div>
-                        <div>
-                            <span class="stat-badge"><i class="fas fa-chart-simple"></i> pico: 45–54 anos</span>
-                        </div>
-                        <hr style="border-color: var(--deep-soft);">
-                        <p><i class="fas fa-crosshairs"></i> Público dominante identificado, permitindo direcionamento mais preciso.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5. principais aprendizados -->
-        <section id="aprendizados">
-            <div class="section-title">
-                <i class="fas fa-graduation-cap"></i>
-                <span>5. principais aprendizados</span>
-            </div>
-            <div class="card-grid">
-                <div class="card">
-                    <ul class="bullet-list">
-                        <li><i class="fas fa-check-circle"></i> <strong>Demanda real</strong> — serviço tem procura na região</li>
-                        <li><i class="fas fa-check-circle"></i> <strong>WhatsApp funciona</strong> — modelo de anúncios validado</li>
-                        <li><i class="fas fa-check-circle"></i> <strong>Criativos diversos</strong> funcionam, mas precisam de renovação</li>
-                        <li><i class="fas fa-check-circle"></i> <strong>Público dominante:</strong> mulheres acima de 35 anos</li>
-                        <li><i class="fas fa-check-circle"></i> <strong>Custo saudável</strong> — R$ 4,18 por contato</li>
-                    </ul>
-                </div>
-                <div class="card" style="background: var(--deep-light);">
-                    <i class="fas fa-repeat" style="font-size:2rem; color:var(--deep-blue); margin-bottom: 16px;"></i>
-                    <p><strong>Repetição reduz desempenho</strong> ao longo do tempo — necessidade de renovação dos anúncios.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 6. próximos passos -->
-        <section id="proximos-passos">
-            <div class="section-title">
-                <i class="fas fa-forward-step"></i>
-                <span>6. próximos passos (a partir de segunda)</span>
-            </div>
-            <div class="next-steps-grid">
-                <div class="step-item"><span class="step-number">1</span> <strong>Direcionamento mais preciso</strong><br>foco em mulheres 35+; redução de investimento em públicos de baixo retorno</div>
-                <div class="step-item"><span class="step-number">2</span> <strong>Novos anúncios</strong><br>comunicação atualizada + promoção como atrativo</div>
-                <div class="step-item"><span class="step-number">3</span> <strong>Estrutura organizada</strong><br>separação de públicos e melhor distribuição de orçamento</div>
-                <div class="step-item"><span class="step-number">4</span> <strong>Otimização contínua</strong><br>monitoramento diário e ajustes rápidos</div>
-            </div>
-        </section>
-
-        <!-- 7. expectativa e conclusão -->
-        <section id="expectativa">
-            <div class="section-title">
-                <i class="fas fa-rocket"></i>
-                <span>7. expectativa & conclusão</span>
-            </div>
-            <div class="card" style="background: linear-gradient(145deg, white, var(--deep-light));">
-                <div style="display: flex; flex-direction: column; gap: 16px;">
-                    <div>
-                        <span class="stat-badge" style="background: var(--deep-blue); color: white;">meta</span>
-                    </div>
-                    <p style="font-size:1.3rem; font-weight:600;">Manter ou reduzir o custo por conversa</p>
-                    <p style="font-size:1.2rem;">Aumentar o volume de contatos</p>
-                    <p style="margin: 16px 0;">Melhor aproveitamento do investimento</p>
-                    <hr style="border-color: var(--deep-soft);">
-                    <p><strong>Conclusão:</strong> campanha inicial cumpriu seu papel de validação. Início da fase de otimização e crescimento.</p>
-                    <div class="btn-outline" style="align-self: flex-start; margin-top: 8px;">
-                        <i class="fas fa-chart-pie"></i> dashboard atualizado
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <footer class="footer-note">
-            <i class="fas fa-chart-simple" style="color: var(--deep-blue);"></i> relatório de desempenho · dados reais: 04 março até hoje · Rafael Gacia
-        </footer>
+  <!-- Hero principal -->
+  <div class="hero">
+    <h1>I-deal Ótica: <span>Armação Grátis</span> <br>+ Exame todos os dias</h1>
+    <p>Agendamento direto na ótica.</p>
+    <p>Segmentação inteligente para Três Rios e região.</p>
+    <div class="offer-highlight">
+      <span class="offer-chip">🕶️ Armação selecionada GRÁTIS</span>
+      <span class="offer-chip">👁️ Exame de vista diário</span>
+      <span class="offer-chip">📅 Agendamento na própria ótica</span>
+      <span class="offer-chip">💬 Conversão via WhatsApp</span>
     </div>
+  </div>
 
-    <script>
-        (function() {
-            // scroll reveal
-            const sections = document.querySelectorAll('section');
-            function checkReveal() {
-                const windowHeight = window.innerHeight;
-                const revealThreshold = 120;
-                sections.forEach(section => {
-                    const rect = section.getBoundingClientRect();
-                    if (rect.top < windowHeight - revealThreshold) {
-                        section.classList.add('revealed');
-                    }
-                });
-            }
-            window.addEventListener('load', checkReveal);
-            window.addEventListener('scroll', checkReveal);
-            checkReveal();
+  <!-- Configuração da campanha + conjunto único -->
+  <div class="card">
+    <h2><i class="fas fa-bullhorn" style="color: var(--accent);"></i> Configuração da campanha</h2>
+    <div class="config-grid">
+      <div class="config-block">
+        <h3><i class="fas fa-tag"></i> Nível campanha</h3>
+        <p><strong>Nome:</strong> ENG | WHATSAPP | ARMAÇÃO GRÁTIS + EXAME</p>
+        <p><strong>Objetivo:</strong> Engajamento</p>
+        <p><strong>Conversão:</strong> Aplicativos de Mensagem → WhatsApp</p>
+        <p><strong>Otimização:</strong> Conversas</p>
+        <p><strong>Orçamento inicial:</strong> R$ 50 a R$ 80/dia</p>
+      </div>
+      <div class="config-block">
+        <h3><i class="fas fa-map-marker-alt"></i> Conjunto único</h3>
+        <p><strong>Nome:</strong> ENG | TRÊS RIOS | 10KM</p>
+        <p>📍 Raio de 10 km · Idade: 30 a 65+</p>
+        <p>⚥ Sexo: Todos · Segmentação: Público Aberto</p>
+        <p><strong>Advantage+ Público:</strong> ATIVADO</p>
+        <p><strong>Posicionamentos:</strong> Advantage+ Posicionamentos</p>
+      </div>
+    </div>
+  </div>
 
-            // barras já começam com altura definida, mas garantimos a transição
-            // (as alturas já estão inline, então a transição ocorre do 0 até o valor setado)
-            // para reforçar a animação, resetamos brevemente?
-            const bars = document.querySelectorAll('.bar');
-            bars.forEach(bar => {
-                const targetHeight = bar.style.height;
-                bar.style.height = '0';
-                setTimeout(() => {
-                    bar.style.height = targetHeight;
-                }, 150);
-            });
-        })();
-    </script>
+  <!-- 3 CRIATIVOS COM COPY -->
+  <div class="card">
+    <h2><i class="fas fa-ad"></i> Os 3 criativos · Arquitetura que encontra diferentes perfis</h2>
+    <div class="creative-cards">
+      <div class="creative">
+        <div class="creative-icon"><i class="fab fa-instagram fa-fw"></i> 📹 Reels</div>
+        <h4>Vídeo Reels · Impacto direto (Copy)</h4>
+        <div class="copy-text">
+          “ARMAÇÃO GRÁTIS? Sim. Na compra das lentes você ganha uma armação selecionada. E agora você também pode agendar seu exame de vista diretamente na ótica. Clique em Enviar Mensagem e consulte as condições.”
+        </div>
+        <span class="badge-oferta">🎯 Oferta direta</span>
+      </div>
+      <div class="creative">
+        <div class="creative-icon"><i class="fas fa-image"></i> 1080x1350</div>
+        <h4>Imagem · Curiosidade (Copy)</h4>
+        <div class="copy-text">
+          “Muitas pessoas estão trocando seus óculos pagando menos do que imaginavam. Além da armação selecionada grátis, agora temos exame de vista todos os dias com agendamento na própria ótica. Quer saber como funciona? Clique em Enviar Mensagem.”
+        </div>
+        <span class="badge-oferta">🧠 Curiosidade + benefício</span>
+      </div>
+      <div class="creative">
+        <div class="creative-icon"><i class="fas fa-check-circle"></i> 1080x1080</div>
+        <h4>Imagem · Facilidade (Copy)</h4>
+        <div class="copy-text">
+          “✔ Exame de vista todos os dias<br>✔ Agendamento na própria ótica<br>✔ Armação selecionada grátis<br>Fale conosco pelo WhatsApp e consulte disponibilidade.”
+        </div>
+        <span class="badge-oferta">⚡ Conveniência + Prova social</span>
+      </div>
+    </div>
+    <div style="background: #FEF3E8; border-radius: 1rem; padding: 0.8rem; font-size: 0.85rem; text-align: center; margin-top: 0.5rem;">
+      <i class="fas fa-chart-line"></i> <strong>Por que essa arquitetura?</strong> A Meta encontra perfis diferentes: pessoas que reagem a promoção, à curiosidade ou à conveniência.<br>
+      Eliminando assim a opção do cliente clicar sem querer.
+    </div>
+  </div>
+
+  <!-- Fluxo esperado -->
+  <div class="card">
+    <h3><i class="fas fa-exchange-alt"></i> Fluxo Esperado da Campanha</h3>
+    <div class="flow-simple">
+      <span class="flow-step"> Anúncio</span> <i class="fas fa-arrow-right"></i>
+      <span class="flow-step"> WhatsApp</span> <i class="fas fa-arrow-right"></i>
+      <span class="flow-step"> Resposta Automaticas</span> <i class="fas fa-arrow-right"></i>
+      <span class="flow-step"> Interação Nitchely</span> <i class="fas fa-arrow-right"></i>
+      <span class="flow-step"> Agendamento do exame</span> <i class="fas fa-arrow-right"></i>
+      <span class="flow-step"> Comparecimento</span> <i class="fas fa-arrow-right"></i>
+      <span class="flow-step"> Venda</span>
+    </div>
+    <hr>
+    <div>
+      <h4><i class="fab fa-whatsapp" style="color:#25D366;"></i> Mensagem automática sugerida (3 respostas rápidas que estarão disponíveis)</h4>
+      <div class="copy-text" style="background: #EFF7F0;">
+        “Olá. Vi a promoção da armação grátis e gostaria de saber:<br>
+        • Como funciona a promoção?<br>
+        • Quais modelos participam?<br>
+        • Como agendar meu exame de vista?”
+      </div>
+    </div>
+  </div>
+
+  <!-- Métricas diárias (monitoramento) -->
+  <div class="card">
+    <h2><i class="fas fa-chart-simple"></i> O que monitorar diariamente Rafael + Relatório da Equipe de Vendas</h2>
+    <table class="metric-table">
+      <thead>
+        <tr><th>Métrica</th><th>Meta / Referência</th><th>Frequência</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Conversas iniciadas(Ótica)</strong></td><td>Mínimo 15-20 por dia</td><td>Diário</td></tr>
+        <tr><td><strong>Custo por conversa(Rafael)</strong></td><td>R$ 5 - R$ 8 (otimizar se > R$9)</td><td>Diário</td></tr>
+        <tr><td><strong>Agendamentos realizados(Ótica)</strong></td><td>Comparar com conversas (50% taxa)</td><td>Diário</td></tr>
+        <tr><td><strong>Comparecimento ao exame(Ótica)</strong></td><td>Acima de 65%</td><td>Diário</td></tr>
+        <tr><td><strong>Vendas fechadas(Ótica)</strong></td><td>Meta 2 a 3 por dia</td><td>Diário</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- OBJETIVO: Mínimo esperado / meta clara -->
+  <div class="card">
+    <h2><i class="fas fa-bullseye"></i> Objetivo da campanha · Mínimo esperado</h2>
+    <div class="goal-box">
+      <div class="goal-numbers">
+        <div class="goal-item">💬 <strong>100 mensagens</strong><br>iniciadas</div>
+        <div class="goal-item">📅 <strong>50 agendamentos</strong><br>conversão 50%</div>
+        <div class="goal-item">👥 <strong>35 comparecimentos</strong><br>70% sobre agendados</div>
+        <div class="goal-item">🛒 <strong>10 a 15 vendas</strong><br>conversão final</div>
+      </div>
+      <p style="margin-top: 0.8rem; font-weight: 600;">✅ <strong>Esse é o mínimo esperado. Vamos lutar juntos para superar.</strong> Com o orçamento de R$50-80/dia e os 3 criativos, a tendência é atingir e ultrapassar essas metas.</p>
+    </div>
+  </div>
+
+  <!-- Resumo estratégico -->
+  <div class="card">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; align-items: center;">
+      <div>
+        <h3><i class="fas fa-rocket"></i> Por que essa estrutura funciona?</h3>
+        <p>✔ Engajamento com WhatsApp + otimização para conversas<br>
+        ✔ Advantage+ segmenta automaticamente dentro do raio 10km e idade 30+<br>
+        ✔ 3 criativos diferentes testam oferta, curiosidade e facilidade<br>
+        ✔ Fluxo do anúncio direto para a conversa → agendamento → venda real</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p><i class="fas fa-chart-line"></i> I-deal Ótica · Campanha com foco em conversas qualificadas via WhatsApp · Três Rios e raio 10km<br>
+    Métricas baseadas em arquitetura real: Armação grátis + Exame diário + Agendamento interno. Acompanhe diariamente custo por conversa e agendamentos.<br>
+Criado por Rafael Garcia</p>
+  </footer>
+</div>
+
+<script>
+  // Simulador com base nas metas: a cada 100 conversas → 50 agendamentos, 35 comparecimentos, 10-15 vendas
+  const dailyInput = document.getElementById('dailyMsg');
+  const simularBtn = document.getElementById('simularBtn');
+  const simuDiv = document.getElementById('simulacaoMeta');
+
+  function atualizarSimulacao() {
+    let conversasPorDia = parseFloat(dailyInput.value);
+    if (isNaN(conversasPorDia) || conversasPorDia < 0) conversasPorDia = 14;
+    const diasMes = 30;
+    const totalConversas = conversasPorDia * diasMes;
+    // proporções fixas conforme objetivo mínimo:
+    const agendamentos = Math.floor(totalConversas * 0.50);   // 50% agendam
+    const comparecimentos = Math.floor(agendamentos * 0.70); // 70% comparecem
+    const vendasMin = Math.floor(comparecimentos * 0.29);    // cerca de 10-15% sobre conversas iniciais? ajuste fino: 10-15 vendas a cada 100 conversas = 10~15%
+    const vendasMax = Math.floor(comparecimentos * 0.43);
+    // garantindo intervalo confiável baseado na meta: 100 conversas => 10-15 vendas
+    const conversasBase = totalConversas;
+    let vendaRefMin = Math.floor(conversasBase * 0.10);
+    let vendaRefMax = Math.floor(conversasBase * 0.15);
+    if (vendaRefMin < 0) vendaRefMin = 0;
+    if (vendaRefMax < vendaRefMin) vendaRefMax = vendaRefMin;
+    
+    simuDiv.innerHTML = `
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem;">
+        <div><i class="fas fa-comments"></i> <strong>Conversas mensais:</strong> ${Math.floor(totalConversas)}</div>
+        <div><i class="fas fa-calendar-check"></i> <strong>Agendamentos (50%):</strong> ${agendamentos}</div>
+        <div><i class="fas fa-user-check"></i> <strong>Comparecimentos (70%):</strong> ${comparecimentos}</div>
+        <div><i class="fas fa-tag"></i> <strong>Vendas projetadas:</strong> ${vendaRefMin} a ${vendaRefMax} (média de 10-15% sobre conversas)</div>
+        <div><i class="fas fa-chart-line"></i> <strong>Meta oficial:</strong> a cada 100 mensagens → 50 agendamentos → 35 comparecimentos → 10~15 vendas ✅</div>
+      </div>
+      <div style="margin-top:0.7rem; background:#E2F0E6; border-radius:1rem; padding:0.5rem; text-align:center;">
+        🎯 Com ${conversasPorDia} conversas/dia, você supera o mínimo esperado (14 conversas/dia = ~420/mês -> ~42-63 vendas/mês). Acompanhe custo por conversa para otimizar.
+      </div>
+    `;
+  }
+
+
+</script>
+
 </body>
 </html>
